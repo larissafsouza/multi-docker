@@ -22,3 +22,16 @@ after_success:
     - docker push larissafabiola/multi-nginx
     - docker push larissafabiola/multi-server
     - docker push larissafabiola/multi-worker
+
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: "sa-east-1"
+    app: "multi-docker"
+    env: "MultiDocker-env"
+    bucket_name: "elasticbeanstalk-sa-east-1-498613743236"
+    bucket_path: "multi-docker"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
